@@ -24,7 +24,7 @@
 <body>
     <!-- Content goes here. -->
     <div class="text-center">
-        <h1> Notemeister 5000: {{tag name}} </h1>
+        <h1 id="header"> Notemeister 5000: </h1>
         <br>
         <br>
     </div>
@@ -35,14 +35,14 @@
         <h4>New Post:</h4>
 
         <form id="create">
-            <input type="text" name="text" placeholder="Title" />
+            <input type="text" name="title" placeholder="Title" />
             <div>
                 <br>
-                <textarea name="text" placeholder="Leave A Note"></textarea>
+                <input name="body" placeholder="Leave A Note"></input>
             </div>
-
+            <br>
             <div>
-                <input type="tag" name="tags" placeholder="Your Tags" />
+                <input type="tag" name="tags" placeholder="Your Tags"/>
             </div>
 
             <br>
@@ -68,9 +68,11 @@
             <div class="body">
                 {{body}}
             </div>
+
+            <div id="tags">
             {{#each tags}}
-            <div id="tag">
-                <a href="#">{{name}}</a> {{/each}}
+                <a href="#" class="tag">{{name}}</a>
+                {{/each}}
             </div>
         </div>
     </script>

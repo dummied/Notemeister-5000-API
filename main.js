@@ -15,15 +15,20 @@ function my_notes() {
 
 my_notes()
 
+function clear_form(selector){
+  $(selector)[0].reset();
+}
+
+
 function chat(response) {
-  var display_note = template(response)
+  var display_notes = template(response.note)
   $('#alpha').prepend(display_notes)
+    alert("hi")
   clear_form('#create')
 }
 
 
 $('#create').on('submit', function(ev){
-  alert("hi")
   ev.preventDefault()
     var new_post = $(this).serializeArray()
     $.post(
@@ -35,3 +40,18 @@ $('#create').on('submit', function(ev){
     })
 })
   // New Post Form ends here
+
+
+  $('#alpha').on('click', '.tag', function(ev){
+    ev.preventDefault();
+    $('#alpha').html("");
+    $.getJSON('https://infinite-mountain-44724.herokuapp.com/api/notes/tag/'+ encodeURIComponent($(this).html()))
+    .then(function(response){
+      $('#header').html('')
+      $('#header').append( 'Notemeister 5000: ' + response.tag.name);
+      return response.tag.notes.forEach(function(note){
+        var display_notes = template(note)
+        $('#alpha').prepend(display_notes)
+      })
+    })
+  })
