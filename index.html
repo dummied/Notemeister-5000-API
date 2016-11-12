@@ -37,17 +37,17 @@
         <form id="create">
             <input type="text" name="title" placeholder="Title" />
             <div>
-                <br>
-                <input name="body" placeholder="Leave A Note"></input>
+                <br><input name="body" placeholder="Leave A Note"></input>
             </div>
             <br>
             <div>
-                <input type="tag" name="tags" placeholder="Your Tags"/>
+                <input type="tag" name="tags" placeholder="Your Tags" />
             </div>
 
             <br>
             <input type="submit" name="submit" value="Create New Post" class="btn btn-primary" />
         </form>
+        
         <br>
         <br>
     </div>
@@ -70,9 +70,8 @@
             </div>
 
             <div id="tags">
-            {{#each tags}}
-                <a href="#" class="tag">{{name}}</a>
-                {{/each}}
+                {{#each tags}}
+                <a href="#" class="tag">{{name}}</a> {{/each}}
             </div>
         </div>
     </script>
