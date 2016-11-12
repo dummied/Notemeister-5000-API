@@ -23,6 +23,12 @@
 
 <body>
     <!-- Content goes here. -->
+
+
+    <div id="alerts"></div>
+
+
+
     <div class="text-center">
         <h1 id="header"> Notemeister 5000: </h1>
         <br>
@@ -37,7 +43,8 @@
         <form id="create">
             <input type="text" name="title" placeholder="Title" />
             <div>
-                <br><input name="body" placeholder="Leave A Note"></input>
+                <br>
+                <input name="body" placeholder="Leave A Note"></input>
             </div>
             <br>
             <div>
@@ -47,7 +54,7 @@
             <br>
             <input type="submit" name="submit" value="Create New Post" class="btn btn-primary" />
         </form>
-        
+
         <br>
         <br>
     </div>
@@ -58,7 +65,31 @@
     </div>
     <!-- Show all posts here -->
 
+    <div id="beta" class="text-center">
+    </div>
+    <!-- Tag modal here -->
 
+
+
+    <div id="tag_modal" class="modal fade" tabindex="-1" roll="dialog" aria-labelledby="basicModal" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismess="modal" aria-hidden="true"><span aria-hidden="true">&times;</span></button>
+              <h5 class="modal-title" id="mytitle"> Title</h5>
+          </div>
+            <!-- modal-header here -->
+            <div class="modal-body">
+              <p>
+                Body text
+              </p>
+            </div>
+        </div>
+          <!-- modal-content here -->
+      </div>
+      <!-- modal-dialog here -->
+    </div>
+     <!-- Div with Beta-id ends here -->
 
     <!-- Scripts go here. -->
 
@@ -71,7 +102,8 @@
 
             <div id="tags">
                 {{#each tags}}
-                <a href="#" class="tag">{{name}}</a> {{/each}}
+                <a href="#" class="tag">{{name}}</a>
+                {{/each}}
             </div>
         </div>
     </script>

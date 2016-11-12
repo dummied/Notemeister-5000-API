@@ -23,7 +23,6 @@ function clear_form(selector) {
 function chat(response) {
     var display_notes = template(response.note)
     $('#alpha').prepend(display_notes)
-    alert("hi")
     clear_form('#create')
 }
 
@@ -54,3 +53,10 @@ $('#alpha').on('click', '.tag', function(ev) {
             })
         })
 })
+
+
+
+if (window.location.hash.match(/#\d+/).length > 0){
+  id = window.location.hash.substring(1);
+  $('#tag_modal').modal('show')
+}
