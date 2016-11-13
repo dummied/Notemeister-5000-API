@@ -1,10 +1,27 @@
+$(document).ready(function(){
+  if(window.location.hash.match(/#\d+/).length > 0) {
+    id = window.location.hash.substring(1);
+    $.getJSON('https://infinite-mountain-44724.herokuapp.com/api/notes/' + id)
+    .then(function(response){
+      console.log(response.note)
+      var display_modal = modal_template(response.note)
+      $('#beta').append(display_modal)
+      $('#note_modal').modal('show')
+    })
+  }
+})
+
+var modal_source = $("#modal-template").html();
+var modal_template = Handlebars.compile(modal_source);
+
+
 var source = $("#entry-template").html();
 var template = Handlebars.compile(source);
 
 
 
 function my_notes() {
-    $.getJSON('https://infinite-mountain-44724.herokuapp.com/api/notes')
+    $.getJSON('https://infinite-mountain-44724.herokuapp.com/api/notes/')
         .then(function(response) {
             return response.notes.forEach(function(note) {
                 var display_notes = template(note)
@@ -31,7 +48,7 @@ $('#create').on('submit', function(ev) {
         ev.preventDefault()
         var new_post = $(this).serializeArray()
         $.post({
-            url: 'https://infinite-mountain-44724.herokuapp.com/api/notes',
+            url: 'https://infinite-mountain-44724.herokuapp.com/api/notes/',
             data: new_post
         }).done(function(response) {
             chat(response)
@@ -53,10 +70,3 @@ $('#alpha').on('click', '.tag', function(ev) {
             })
         })
 })
-
-
-
-if (window.location.hash.match(/#\d+/).length > 0){
-  id = window.location.hash.substring(1);
-  $('#tag_modal').modal('show')
-}
